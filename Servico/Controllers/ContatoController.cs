@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -28,7 +29,8 @@ namespace Servico.Controllers
         {
             Models.AgendaDataContext dc = new Models.AgendaDataContext();
             Models.Contato cont = (from f in dc.Contatos where f.Id == id select f).Single();
-            contato.Nome = contato.Nome;
+            cont.Nome = contato.Nome;
+            cont.Telefone = contato.Telefone;
             dc.SubmitChanges();
         }
 
